@@ -1,0 +1,48 @@
+{% extends 'login_register_base.html' %}
+
+{% block content %}
+
+<div class="container">
+
+    {% if form.non_field_errors %}
+        <div class="messages">
+            <div class="alert alert-warning alert-dismissible" role="alert">
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+                {{ form.non_field_errors }}
+            </div>
+        </div>
+    {% endif %}
+
+     <form action="" method="post" class="form-signin">
+         {% csrf_token %}
+         <h2 class="form-signin-heading">Please Register</h2>
+        {% if form.username.errors %}
+            <span class="text-danger pull-right">{{ form.username.errors }}</span>
+        {% endif %}
+         <label for="username" class="sr-only">Email address</label>
+         <input type="text" name="username" id="username" class="form-control" placeholder="用户名" required autofocus>
+
+        {% if form.email.errors %}
+            <span class="text-danger pull-right">{{ form.email.errors }}</span>
+        {% endif %}
+        <label for="email" class="sr-only">Email Adress</label>
+        <input type="email" name="email" id="email" class="form-control" placeholder="邮箱" required>
+
+        {% if form.password.errors %}
+            <span class="text-danger pull-right">{{ form.password.errors }}</span>
+        {% endif %}
+         <label for="password" class="sr-only">Password</label>
+         <input type="password" name="password" id="password" class="form-control" placeholder="密码" required>
+
+        {% if form.confirm_password.errors %}
+            <span class="text-danger pull-right">{{ form.confirm_password.errors }}</span>
+        {% endif %}
+         <label for="confirm_password" class="sr-only">confirm_password</label>
+         <input type="password" name="confirm_password" id="confirm_password" class="form-control" placeholder="重复密码" required>
+
+         <button type="submit" class="btn btn-lg btn-primary btn-block">注 册</button>
+     </form>
+
+</div>
+
+{% endblock %}

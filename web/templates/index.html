@@ -1,0 +1,15 @@
+{% extends 'base.html' %}
+{% block content %}
+{% if user.is_authenticated %}
+Hello, {{ user }}
+
+    <br><a href="{% url 'logout' %}?next=/web/">logout</a>
+{% else %}
+Hello , Stranger!
+    <br>Please <a href="{% url 'login' %}">login</a>
+{% endif %}
+<br>The index page
+{% endblock %}
+{% block rightlist %}
+
+{% endblock %}
